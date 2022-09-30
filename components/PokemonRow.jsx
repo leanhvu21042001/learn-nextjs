@@ -1,3 +1,4 @@
+import { Box, Button } from "@mui/material";
 import { observer } from "mobx-react";
 import Link from "next/link";
 
@@ -8,11 +9,16 @@ const PokemonRow = ({ pokemon }) => (
     <td>
       <Link href={`/pokemon/${pokemon.id}`}>{pokemon.name.english}</Link>
     </td>
-    <td>{pokemon.type.join(", ")}</td>
     <td>
-      <button onClick={() => mobxStore.setPokemonSelected(pokemon)}>
+      <Box component="b">{pokemon.type.join(", ")}</Box>
+    </td>
+    <td>
+      <Button
+        variant="contained"
+        onClick={() => mobxStore.setPokemonSelected(pokemon)}
+      >
         More Information
-      </button>
+      </Button>
     </td>
   </tr>
 );

@@ -1,0 +1,12 @@
+.pokemon-table {
+  width: 100%;
+}
+
+.pokemon-table tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pokemon-table tr td :is(b, span, a, button) {
+  font-size: 1rem;
+}

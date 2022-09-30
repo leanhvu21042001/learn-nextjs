@@ -11,13 +11,14 @@ const PokemonTable = () => {
   const pokemonRows = combinePokemonRow(mobxStore.filteredPokemon);
 
   return (
-    <table>
+    <table className="pokemon-table">
       <thead>
         <tr>
           <th>Name</th>
           <th>Type</th>
         </tr>
       </thead>
+
       <tbody>{pokemonRows}</tbody>
     </table>
   );
