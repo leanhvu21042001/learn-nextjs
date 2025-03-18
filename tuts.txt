@@ -1,0 +1,6 @@
+https://dummyjson.com/docs/todos
+https://nextjs.org/docs/13/app/building-your-application/data-fetching
+https://overreacted.io/
+https://leerob.com/
+https://www.youtube.com/@leerob
+https://www.youtube.com/watch?v=L5JU1oR29TM&t=2297s

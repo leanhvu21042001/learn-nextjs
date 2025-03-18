@@ -1,0 +1,1 @@
+# All in this folder is Pages Router
