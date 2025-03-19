@@ -15,7 +15,7 @@ interface TodoStore {
   deleteTodo: (id: number) => Promise<void>;
 }
 
-export const useTodoStore = create<TodoStore>((set) => ({
+export const useTodoPageFetchStore = create<TodoStore>((set) => ({
   todos: [],
   fetchTodos: async () => {
     const res = await fetch("/api/todos");

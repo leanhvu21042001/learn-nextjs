@@ -1,5 +1,5 @@
 "use client";
-import { useTodoClientStore } from "@/lib/todo.zustand.app";
+import { useTodoAppPrismaStore } from "@/lib/zustand/todo.zustand.app";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 
@@ -10,7 +10,7 @@ export default function TodoDetail({
 }) {
   const paramsUsed = use(params);
   const router = useRouter();
-  const todo = useTodoClientStore((state) =>
+  const todo = useTodoAppPrismaStore((state) =>
     state.todos.find((t) => t.id === Number(paramsUsed.id))
   );
 

@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useTodoClientStore } from "@/lib/todo.zustand.app";
+import { useTodoAppPrismaStore } from "@/lib/zustand/todo.zustand.app";
 
 export default function NewTodoPage() {
   const [title, setTitle] = useState("");
-  const { addTodo } = useTodoClientStore();
+  const { addTodo } = useTodoAppPrismaStore();
   const router = useRouter();
 
   return (

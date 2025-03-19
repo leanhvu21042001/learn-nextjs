@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getTodos, addTodo, toggleTodo, deleteTodo } from "./actions";
+import { getTodos, addTodo, toggleTodo, deleteTodo } from "../prisma/actions";
 
 interface Todo {
   id: number;
@@ -15,7 +15,7 @@ interface TodoStore {
   deleteTodo: (id: number) => Promise<void>;
 }
 
-export const useTodoClientStore = create<TodoStore>((set) => ({
+export const useTodoAppPrismaStore = create<TodoStore>((set) => ({
   todos: [],
   fetchTodos: async () => {
     const data = await getTodos();

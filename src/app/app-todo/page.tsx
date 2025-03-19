@@ -1,10 +1,10 @@
 "use client";
-import { useTodoClientStore } from "@/lib/todo.zustand.app";
+import { useTodoAppPrismaStore } from "@/lib/zustand/todo.zustand.app";
 import Link from "next/link";
 import { useEffect } from "react";
 
 export default function TodoPage() {
-  const { todos, fetchTodos, toggleTodo, deleteTodo } = useTodoClientStore();
+  const { todos, fetchTodos, toggleTodo, deleteTodo } = useTodoAppPrismaStore();
 
   useEffect(() => {
     fetchTodos();

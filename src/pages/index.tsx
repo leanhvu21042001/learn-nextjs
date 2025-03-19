@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useTodoStore } from "@/lib/todo.zustand.pages";
+import { useTodoPageFetchStore } from "@/lib/zustand/todo.zustand.pages";
 
 export default function Home() {
-  const { todos, fetchTodos, addTodo, deleteTodo } = useTodoStore();
+  const { todos, fetchTodos, addTodo, deleteTodo } = useTodoPageFetchStore();
   const [newTitle, setNewTitle] = useState("");
   const [newDesc, setNewDesc] = useState("");
 
