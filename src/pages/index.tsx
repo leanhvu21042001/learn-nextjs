@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div className="max-w-lg mx-auto p-4">
-      <h1 className="text-2xl font-bold">Todo App</h1>
+      <h1 className="text-2xl font-bold">Page TODO - Home</h1>
       <div className="my-4">
         <input
           className="border p-2 w-full mb-2"

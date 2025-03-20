@@ -8,11 +8,11 @@ export default function TodoPage() {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   return (
     <div className="max-w-lg mx-auto p-4">
-      <h1 className="text-2xl font-bold">Todo List</h1>
+      <h1 className="text-2xl font-bold">App Todo</h1>
       <Link
         href="/app-todo/new"
         className="bg-blue-500 text-white p-2 inline-block my-4"

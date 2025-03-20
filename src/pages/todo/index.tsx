@@ -52,7 +52,7 @@ export default function TodoApp() {
 
   return (
     <div className="max-w-md mx-auto text-center p-6">
-      <h1 className="text-3xl font-bold mb-6">Todo App</h1>
+      <h1 className="text-3xl font-bold mb-6">Page TODO</h1>
       <div className="flex gap-2 mb-4">
         <input
           type="text"
