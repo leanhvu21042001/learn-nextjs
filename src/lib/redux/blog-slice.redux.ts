@@ -1,40 +1,44 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getBlogs, addBlog, editBlog, deleteBlog } from "../prisma/actions";
+import { Blog } from "@/types/types";
 
 // Gọi API Blogs
 export const fetchBlogsThunk = createAsyncThunk(
   "blogs/fetchBlogs",
   async () => {
-    const data = await getBlogs();
-    return data;
+    const blogs = await getBlogs();
+    return blogs.map((blog) => ({
+      ...blog,
+      createdAt: blog.createdAt.toISOString(),
+    }));
   }
 );
 
 export const addBlogThunk = createAsyncThunk(
   "blogs/addBlog",
-  async ({ title, content }: { title: string; content: string }) => {
-    return await addBlog(title, content);
+  async ({ title, content }: Pick<Blog, "title" | "content">) => {
+    const blog = await addBlog(title, content || "");
+    return {
+      ...blog,
+      createdAt: blog.createdAt.toISOString(),
+    };
   }
 );
 
 export const editBlogThunk = createAsyncThunk(
   "blogs/editBlog",
-  async ({
-    id,
-    title,
-    content,
-  }: {
-    id: number;
-    title: string;
-    content: string;
-  }) => {
-    return await editBlog(id, title, content);
+  async ({ id, title, content }: Pick<Blog, "id" | "title" | "content">) => {
+    const blog = await editBlog(id, title, content || "");
+    return {
+      ...blog,
+      createdAt: blog?.createdAt.toISOString(),
+    };
   }
 );
 
 export const deleteBlogThunk = createAsyncThunk(
   "blogs/deleteBlog",
-  async (id: number) => {
+  async (id: Blog["id"]) => {
     return await deleteBlog(id);
   }
 );
@@ -42,16 +46,16 @@ export const deleteBlogThunk = createAsyncThunk(
 // Redux Slice
 const blogSlice = createSlice({
   name: "blogs",
-  initialState: [] as {
-    id: number;
-    title: string;
-    content: string | null;
-    createdAt: Date;
-  }[],
+  initialState: [] as Blog[],
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchBlogsThunk.fulfilled, (state, action) => action.payload)
+      .addCase(fetchBlogsThunk.fulfilled, (state, action) => {
+        console.log({
+          actionPayload: action.payload,
+        });
+        return action.payload;
+      })
       .addCase(addBlogThunk.fulfilled, (state, action) => {
         state.push(action.payload);
       })
@@ -60,6 +64,7 @@ const blogSlice = createSlice({
         if (blog) {
           blog.title = action.payload?.title || blog.title;
           blog.content = action.payload?.content || blog.content;
+          blog.createdAt = action.payload?.createdAt || blog.createdAt;
         }
       })
       .addCase(deleteBlogThunk.fulfilled, (state, action) =>

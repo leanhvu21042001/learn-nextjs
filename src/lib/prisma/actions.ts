@@ -30,7 +30,9 @@ export async function getBlogs() {
 }
 
 export async function addBlog(title: string, content: string) {
-  return await prisma.blog.create({ data: { title, content } });
+  return await prisma.blog.create({
+    data: { title, content, createdAt: new Date() },
+  });
 }
 
 export async function editBlog(id: number, title: string, content: string) {
