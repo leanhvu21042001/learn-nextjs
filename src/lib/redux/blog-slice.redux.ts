@@ -39,7 +39,12 @@ export const editBlogThunk = createAsyncThunk(
 export const deleteBlogThunk = createAsyncThunk(
   "blogs/deleteBlog",
   async (id: Blog["id"]) => {
-    return await deleteBlog(id);
+    const blog = await deleteBlog(id);
+
+    return {
+      ...blog,
+      createdAt: blog?.createdAt.toISOString(),
+    };
   }
 );
 
@@ -51,9 +56,6 @@ const blogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchBlogsThunk.fulfilled, (state, action) => {
-        console.log({
-          actionPayload: action.payload,
-        });
         return action.payload;
       })
       .addCase(addBlogThunk.fulfilled, (state, action) => {
