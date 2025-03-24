@@ -1,12 +1,12 @@
 "use client";
 
-import { editBlogThunk } from "@/lib/redux/blog-slice-app.redux";
+import { editBlogThunk } from "@/lib/redux/blog-slice-page.redux";
 import { AppDispatch, RootState } from "@/lib/redux/store.redux";
 import { Blog } from "@/types/types";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-export default function ModalEditBlog({
+export default function ModalEditBlogPageRouter({
   close,
   isOpen,
   blogId,
@@ -17,7 +17,7 @@ export default function ModalEditBlog({
 }) {
   const dispatch = useDispatch<AppDispatch>();
   const blog = useSelector((state: RootState) =>
-    state.blogsApp.find((t) => t.id === blogId)
+    state.blogsPage.find((t) => t.id === blogId)
   );
 
   if (!isOpen) return null;

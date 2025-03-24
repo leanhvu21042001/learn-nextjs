@@ -44,8 +44,8 @@ const Menu = () => {
         />
         <MenuItem
           label="Page Blog"
-          link="/page-blog"
-          active={pathname === "/page-blog"}
+          link="/blog"
+          active={pathname === "/blog"}
         />
         <MenuItem label="About" link="/about" active={pathname === "/about"} />
       </ul>

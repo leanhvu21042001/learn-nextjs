@@ -1,50 +1,60 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getBlogs, addBlog, editBlog, deleteBlog } from "../prisma/actions";
 import { Blog } from "@/types/types";
 
 // Gọi API Blogs
 export const fetchBlogsThunk = createAsyncThunk(
-  "blogs/fetchBlogs",
+  "blogs-page/fetchBlogs",
   async () => {
-    const blogs = await getBlogs();
-    return blogs.map((blog) => ({
+    const res = await fetch("/api/blogs");
+    const blogs = await res.json();
+
+    return blogs.map((blog: Blog) => ({
       ...blog,
-      createdAt: blog.createdAt.toISOString(),
+      createdAt: new Date(blog.createdAt).toISOString(),
     }));
   }
 );
 
 export const addBlogThunk = createAsyncThunk(
-  "blogs/addBlog",
+  "blogs-page/addBlog",
   async ({ title, content }: Pick<Blog, "title" | "content">) => {
-    const blog = await addBlog(title, content || "");
+    const res = await fetch("/api/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }),
+    });
+    const blog = await res.json();
     return {
       ...blog,
-      createdAt: blog.createdAt.toISOString(),
+      createdAt: new Date(blog.createdAt).toISOString(),
     };
   }
 );
 
 export const editBlogThunk = createAsyncThunk(
-  "blogs/editBlog",
+  "blogs-page/editBlog",
   async ({ id, title, content }: Pick<Blog, "id" | "title" | "content">) => {
-    const blog = await editBlog(id, title, content || "");
+    const res = await fetch(`/api/blogs/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, content }),
+    });
+    const blog = await res.json();
     return {
       ...blog,
-      createdAt: blog?.createdAt.toISOString(),
+      createdAt: new Date(blog.createdAt).toISOString(),
     };
   }
 );
 
 export const deleteBlogThunk = createAsyncThunk(
-  "blogs/deleteBlog",
+  "blogs-page/deleteBlog",
   async (id: Blog["id"]) => {
-    const blog = await deleteBlog(id);
-
-    return {
-      ...blog,
-      createdAt: blog?.createdAt.toISOString(),
-    };
+    await fetch(`/api/blogs/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    return { id };
   }
 );
 

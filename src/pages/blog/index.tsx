@@ -2,23 +2,24 @@
 
 import FormAddBlog from "@/components/FormAddBlog";
 import ListBlog from "@/components/ListBlog";
-import ModalEditBlog from "@/components/ModalEditBlog";
+import ModalEditBlogPageRouter from "@/components/ModalEditBlogPageRouter";
 import { useModal } from "@/lib/hooks";
 import {
   addBlogThunk,
   deleteBlogThunk,
   fetchBlogsThunk,
-} from "@/lib/redux/blog-slice-app.redux";
+} from "@/lib/redux/blog-slice-page.redux";
+
 import { AppDispatch, RootState } from "@/lib/redux/store.redux";
 import { Blog } from "@/types/types";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
-// Component that uses Redux
-export default function AppBlog() {
+export default function BlogPage() {
   const dispatch = useDispatch<AppDispatch>();
-  const blogs = useSelector((state: RootState) => state.blogsApp);
+  const blogs = useSelector((state: RootState) => state.blogsPage);
+
   const { isOpen, close, open } = useModal();
   const [blogIdSelected, setBlogIdSelected] = useState<Blog["id"] | null>(null);
 
@@ -84,7 +85,7 @@ export default function AppBlog() {
         }}
       />
 
-      <ModalEditBlog close={close} isOpen={isOpen} blogId={blogIdSelected} />
+      <ModalEditBlogPageRouter close={close} isOpen={isOpen} blogId={blogIdSelected} />
 
       <style jsx>{`
         main {
