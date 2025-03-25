@@ -13,8 +13,8 @@ import {
 import { AppDispatch, RootState } from "@/lib/redux/store.redux";
 import { Blog } from "@/types/types";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
 
 export default function BlogPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -85,7 +85,11 @@ export default function BlogPage() {
         }}
       />
 
-      <ModalEditBlogPageRouter close={close} isOpen={isOpen} blogId={blogIdSelected} />
+      <ModalEditBlogPageRouter
+        close={close}
+        isOpen={isOpen}
+        blogId={blogIdSelected}
+      />
 
       <style jsx>{`
         main {
