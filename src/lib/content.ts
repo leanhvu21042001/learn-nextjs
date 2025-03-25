@@ -259,9 +259,9 @@ export const defaultEditorContent = {
     {
       type: "image",
       attrs: {
-        src: "https://public.blob.vercel-storage.com/pJrjXbdONOnAeZAZ/banner-2wQk82qTwyVgvlhTW21GIkWgqPGD2C.png",
-        alt: "banner.png",
-        title: "banner.png",
+        src: "/banner.jpg",
+        alt: "banner.jpg",
+        title: "banner.jpg",
         width: null,
         height: null,
       },
