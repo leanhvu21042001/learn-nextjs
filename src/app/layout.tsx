@@ -1,9 +1,12 @@
+import "@/styles/globals.css";
+import { ThemeProvider } from "next-themes";
+
+import Menu from "@/components/Menu";
+import ToastProvider from "@/components/ToastProvider";
+import { ReduxProvider } from "@/lib/redux/provider";
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "@/styles/globals.css";
-import Menu from "@/components/Menu";
-import { ReduxProvider } from "@/lib/redux/provider";
-import ToastProvider from "@/components/ToastProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,9 +32,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ReduxProvider>
-          <Menu />
-          <ToastProvider />
-          {children}
+          <ThemeProvider
+            attribute="class"
+            enableSystem
+            disableTransitionOnChange
+            defaultTheme="system"
+          >
+            <Menu />
+            <ToastProvider />
+            {children}
+          </ThemeProvider>
         </ReduxProvider>
       </body>
     </html>
