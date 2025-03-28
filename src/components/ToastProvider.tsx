@@ -1,13 +1,22 @@
-"use client";
-
-import { useTheme } from "next-themes";
-import { Toaster } from "sonner";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ToastProvider = () => {
-  const { theme } = useTheme() as {
-    theme: "light" | "dark" | "system";
-  };
-  return <Toaster theme={theme} />;
+  return (
+    <ToastContainer
+      position="bottom-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      limit={3}
+    />
+  );
 };
 
 export default ToastProvider;
