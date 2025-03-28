@@ -1,8 +1,7 @@
 .ProseMirror {
-  padding: 8px 12px;
-
+  padding: 12px 12px;
   @media (min-width: 640px) {
-    padding: 48px;
+    padding: 12px 24px;
   }
 }
 
