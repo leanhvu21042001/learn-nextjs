@@ -12,8 +12,8 @@ import {
 import { AppDispatch, RootState } from "@/lib/redux/store.redux";
 import { Blog } from "@/types/types";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "sonner";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 // Component that uses Redux
 export default function AppBlog() {

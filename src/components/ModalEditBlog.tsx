@@ -4,7 +4,7 @@ import { editBlogThunk } from "@/lib/redux/blog-slice-app.redux";
 import { AppDispatch, RootState } from "@/lib/redux/store.redux";
 import { Blog } from "@/types/types";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 export default function ModalEditBlog({
   close,
