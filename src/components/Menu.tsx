@@ -47,6 +47,11 @@ const Menu = () => {
           link="/blog"
           active={pathname === "/blog"}
         />
+        <MenuItem
+          label="App Products"
+          link="/products"
+          active={pathname === "/products"}
+        />
         <MenuItem label="About" link="/about" active={pathname === "/about"} />
       </ul>
     </nav>
