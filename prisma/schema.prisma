@@ -19,12 +19,22 @@ model User {
   id    String @id @default(uuid())
   email String @unique
   name  String?
-
+  password String?
+  createdAt DateTime @default(now())
 }
 
 model Blog {
   id        Int      @id @default(autoincrement())
   title     String
   content   String?
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id        Int      @id @default(autoincrement())
+  name      String
+  price     Float
+  description String?
+  image     String?
   createdAt DateTime @default(now())
 }

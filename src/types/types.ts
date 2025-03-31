@@ -11,3 +11,12 @@ export type Blog = {
   content: string | null;
   createdAt: string;
 };
+
+export type Product = {
+  id: number;
+  name: string;
+  price: number;
+  description: string | null;
+  image: string | null;
+  createdAt: string;
+};
