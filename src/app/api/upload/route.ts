@@ -6,7 +6,16 @@ export const POST = async (req: Request) => {
     const publicId = await uploadImage(base64String);
     const imageUrl = await getImageUrl(publicId);
 
-    return new Response(imageUrl, { status: 200 });
+    const response = {
+      publicId,
+      imageUrl,
+    };
+    return new Response(JSON.stringify(response), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.error("Error uploading image:", error);
     return new Response(

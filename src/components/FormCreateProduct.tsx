@@ -115,18 +115,30 @@ export default function FormCreateProduct() {
         "base64"
       )}`;
 
-      await dispatch(
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: JSON.stringify({ image: base64String }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        const errorMessage = await response.text();
+        console.error("Error uploading image:", errorMessage);
+      }
+      const { imageUrl } = await response.json();
+
+      dispatch(
         addProductThunk({
           name,
           price: +price,
           description,
-          image: base64String,
+          image: imageUrl,
         })
       )
         .unwrap()
         .then(() => {
           toast.success("Product added successfully");
-          // Reset the form
           e.currentTarget?.reset();
         })
         .catch((error) => {
