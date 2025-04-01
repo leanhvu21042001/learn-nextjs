@@ -1,6 +1,5 @@
 "use server";
 
-import { getImageUrl, uploadImage } from "../cloudinary";
 import prisma from "./prisma";
 
 // get product
@@ -13,12 +12,10 @@ export async function addProduct(
   name: string,
   price: number,
   description: string,
-  image: string | Base64URLString
+  image: string
 ) {
-  const publicId = await uploadImage(image);
-  const imageUrl = await getImageUrl(publicId);
   return await prisma.product.create({
-    data: { name, price, description, image: imageUrl, createdAt: new Date() },
+    data: { name, price, description, image, createdAt: new Date() },
   });
 }
 
