@@ -1,12 +1,11 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useTodoAppPrismaStore } from "@/lib/zustand/todo.zustand.app";
+import { AppBtnAnchorAddTodo } from "@/components/Anchors";
 
 export default function NewTodoPage() {
   const [title, setTitle] = useState("");
   const { addTodo } = useTodoAppPrismaStore();
-  const router = useRouter();
 
   return (
     <div className="max-w-lg mx-auto p-4">
@@ -17,15 +16,7 @@ export default function NewTodoPage() {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Todo title..."
       />
-      <button
-        className="bg-green-500 text-white p-2"
-        onClick={() => {
-          addTodo(title);
-          router.push("/app-todo");
-        }}
-      >
-        Save
-      </button>
+      <AppBtnAnchorAddTodo action={addTodo} payload={title} />
     </div>
   );
 }

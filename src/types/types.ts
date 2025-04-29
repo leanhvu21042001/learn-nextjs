@@ -1,8 +1,16 @@
 export type Todo = {
   id: number;
-  todo: string;
+  title: string;
   completed: boolean;
   userId: number;
+};
+
+export type User = {
+  id: string;
+  email: string;
+  name: string;
+  password: string;
+  createdAt: Date;
 };
 
 export type Blog = {

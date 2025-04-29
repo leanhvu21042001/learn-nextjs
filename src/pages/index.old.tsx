@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { useTodoPageFetchStore } from "@/lib/zustand/todo.zustand.pages";
+import { PageAnchorTodoDetail } from "@/components/Anchors";
 
 export default function Home() {
   const { todos, fetchTodos, addTodo, deleteTodo } = useTodoPageFetchStore();
@@ -37,17 +37,7 @@ export default function Home() {
       <ul>
         {todos.map((todo) => (
           <li key={todo.id} className="flex justify-between p-2 border-b">
-            <Link href={`/todo/${todo.id}`}>
-              <span
-                className={
-                  todo.completed
-                    ? "line-through cursor-pointer"
-                    : "cursor-pointer"
-                }
-              >
-                {todo.title}
-              </span>
-            </Link>
+            <PageAnchorTodoDetail todo={todo} />
             <button
               className="text-red-500"
               onClick={() => deleteTodo(todo.id)}
