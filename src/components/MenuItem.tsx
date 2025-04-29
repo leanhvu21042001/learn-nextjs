@@ -1,6 +1,6 @@
 import React from "react";
-import Link from "next/link";
 import styles from "./MenuItem.module.css";
+import { DefaultAnchor } from "./Anchors";
 
 interface MenuItemProps {
   label: string;
@@ -11,7 +11,7 @@ interface MenuItemProps {
 const MenuItem: React.FC<MenuItemProps> = ({ label, link, active }) => {
   return (
     <li className={`${styles.menuItem} ${active ? styles.active : ""}`}>
-      <Link href={link}>{label}</Link>
+      <DefaultAnchor url={link}>{label}</DefaultAnchor>
     </li>
   );
 };
