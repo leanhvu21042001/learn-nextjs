@@ -9,7 +9,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchTodos();
-  }, []);
+  }, [fetchTodos]);
 
   return (
     <div className="max-w-lg mx-auto p-4">
