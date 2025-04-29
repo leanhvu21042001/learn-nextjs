@@ -24,13 +24,6 @@ export const appRouters = {
     },
   },
   app_todo_new: { url: "/app-demo/todo/new", label: "App Todo New" },
-  app_user_todo: {
-    url: "/app-demo/user/:id/todo",
-    label: "App User Todo",
-    urlWithParams({ id }: { id: string }) {
-      return this.url.replace(":id", id);
-    },
-  },
 };
 
 export const hasParam = (url: string) => {

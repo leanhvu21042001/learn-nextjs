@@ -17,21 +17,21 @@ export const addTodo = createAsyncThunk(
   }
 );
 
-export const toggleTodo = createAsyncThunk(
-  "todos/toggleTodo",
-  async (id: number) => {
-    const res = await fetch(`/api/app-todos/${id}`, { method: "PATCH" });
-    return res.json();
-  }
-);
+// export const toggleTodo = createAsyncThunk(
+//   "todos/toggleTodo",
+//   async (id: number) => {
+//     const res = await fetch(`/api/app-todos/${id}`, { method: "PATCH" });
+//     return res.json();
+//   }
+// );
 
-export const deleteTodo = createAsyncThunk(
-  "todos/deleteTodo",
-  async (id: number) => {
-    await fetch(`/api/app-todos/${id}`, { method: "DELETE" });
-    return id;
-  }
-);
+// export const deleteTodo = createAsyncThunk(
+//   "todos/deleteTodo",
+//   async (id: number) => {
+//     await fetch(`/api/app-todos/${id}`, { method: "DELETE" });
+//     return id;
+//   }
+// );
 
 // Redux Slice
 const todoSlice = createSlice({
@@ -44,13 +44,13 @@ const todoSlice = createSlice({
       .addCase(addTodo.fulfilled, (state, action) => {
         state.push(action.payload);
       })
-      .addCase(toggleTodo.fulfilled, (state, action) => {
-        const todo = state.find((t) => t.id === action.payload.id);
-        if (todo) todo.completed = action.payload.completed;
-      })
-      .addCase(deleteTodo.fulfilled, (state, action) =>
-        state.filter((t) => t.id !== action.payload)
-      );
+      // .addCase(toggleTodo.fulfilled, (state, action) => {
+      //   const todo = state.find((t) => t.id === action.payload.id);
+      //   if (todo) todo.completed = action.payload.completed;
+      // })
+      // .addCase(deleteTodo.fulfilled, (state, action) =>
+      //   state.filter((t) => t.id !== action.payload)
+      // );
   },
 });
 
