@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 export default function FormShoppingCart() {
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  // const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
 
-    console.log(formData);
-  };
+  //   console.log(formData);
+  // };
 
   return (
     <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 h-full flex flex-col">
