@@ -14,11 +14,18 @@ pnpm dev
 bun dev
 ```
 
-## Create a migration script
+## Drizzle setup
 
 ```sh
 npx drizzle-kit migrate
 # khi có cập nhập cột mới hoặc type thì chạy 2 dòng dưới.
 npx drizzle-kit generate
 npx drizzle-kit push
+```
+
+## Prisma setup
+
+```sh
+npx prisma generate
+npx prisma migrate dev --name init
 ```
